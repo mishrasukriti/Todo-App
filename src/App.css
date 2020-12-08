@@ -112,7 +112,7 @@
   .select {
     margin: 1rem;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
   select {
     color: #ff6f47;
@@ -126,14 +126,41 @@
     position: absolute;
     top: 0;
     right: 0;
+    bottom: 0;
     padding: 1rem;
     background: #ff6f47;
     cursor: pointer;
     pointer-events: none;
   }
   /* Transition */
-  /*
-  .select:hover::after {
+  
+  /* .select:hover::after {
     transform: scale(1.5);
   }
   */
+  
+  @media only screen and (max-device-width: 480px) {
+    div#wrapper {
+        width: 400px;
+    }
+
+    div#header {
+        /* background-image: url(media-queries-phone.jpg); */
+        height: 93px;
+        position: relative;
+    }
+
+    div#header h1 {
+        font-size: 140%;
+    }
+
+    #content {
+        float: none;
+        width: 100%;
+    }
+
+    #navigation {
+        float:none;
+        width: auto;
+    }
+}
