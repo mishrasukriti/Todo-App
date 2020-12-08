@@ -20,12 +20,10 @@ function App() {
 
   // Use Effect
   useEffect(() => {
-    filterHandler();
-    saveTodosToLocalStorage();
-  }, [todos, status]);
+    // filterHandler();
+    // saveTodosToLocalStorage();
+    
 
-  // Functions
-  const filterHandler = ()=>{
     switch(status){
       case 'completed':
         setfilteredTodos(todos.filter( todo => todo.completed=== true));
@@ -37,12 +35,31 @@ function App() {
         setfilteredTodos(todos);
         break;
     }
-  }
+
+    // Save to Local Storage
+      localStorage.setItem("todos", JSON.stringify(todos));
+    
+  }, [todos, status]);
+
+  // Functions
+  // const filterHandler = ()=>{
+  //   switch(status){
+  //     case 'completed':
+  //       setfilteredTodos(todos.filter( todo => todo.completed=== true));
+  //       break;
+  //     case 'uncompleted':
+  //       setfilteredTodos(todos.filter( todo => todo.completed=== false));
+  //       break;
+  //     default:
+  //       setfilteredTodos(todos);
+  //       break;
+  //   }
+  // }
 
   // Save to Local Storage
-  const saveTodosToLocalStorage = () =>{
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }
+  // const saveTodosToLocalStorage = () =>{
+  //   localStorage.setItem("todos", JSON.stringify(todos));
+  // }
 
   const getLocalTodos = () =>{
     if(localStorage.getItem("todos") === null) {
