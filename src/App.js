@@ -20,10 +20,9 @@ function App() {
 
   // Use Effect
   useEffect(() => {
-    // filterHandler();
-    // saveTodosToLocalStorage();
     
-
+    // Handler to filter task according to their state of completion and also to display all the task
+    
     switch(status){
       case 'completed':
         setfilteredTodos(todos.filter( todo => todo.completed=== true));
@@ -41,29 +40,11 @@ function App() {
     
   }, [todos, status]);
 
-  // Functions
-  // const filterHandler = ()=>{
-  //   switch(status){
-  //     case 'completed':
-  //       setfilteredTodos(todos.filter( todo => todo.completed=== true));
-  //       break;
-  //     case 'uncompleted':
-  //       setfilteredTodos(todos.filter( todo => todo.completed=== false));
-  //       break;
-  //     default:
-  //       setfilteredTodos(todos);
-  //       break;
-  //   }
-  // }
-
-  // Save to Local Storage
-  // const saveTodosToLocalStorage = () =>{
-  //   localStorage.setItem("todos", JSON.stringify(todos));
-  // }
-
+  
+  // Function to get Todos stored in local storage
   const getLocalTodos = () =>{
     if(localStorage.getItem("todos") === null) {
-      localStorage.setItem("todos", JSON.stringify([]))
+      localStorage.setItem("todos", JSON.stringify([]));
     }
     else {
        let localTodos = JSON.parse(localStorage.getItem("todos"));
@@ -72,9 +53,9 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App ">
       <header>
-        <h1>Todo List</h1>
+        <h1>Todo App</h1>
       </header>
 
       <Form  setStatus={setStatus} inputText={inputText} setInputText={setInputText} todos={todos} setTodos={setTodos}  />
